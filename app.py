@@ -2,7 +2,11 @@ budget_posts = {} #dictionary with all budget posts and its values
 
 print("Välkommen till ditt budgetprogram") # Start of program
 while True:
-    salary
+    salary = input("Vad är din lön?")
+    try:
+        salary = float(salary)
+    except ValueError:
+        print("Du måste skriva en siffra!")
 
 while True: #Main loop
     print("Val 1: Lägg till kategori.")
