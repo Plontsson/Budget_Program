@@ -62,6 +62,9 @@ while True: #Main loop
             
     elif svar == "val 2": # Change budgetpost
         while True:
+            print("Du har dessa budgetposter redan: ")
+            for key, value in budget_posts.items(): #print budget posts so you can which you already have
+                print(f"{key}: {value}", "kr")
             key = input("Vilken kategori skulle du vilja ändra? ").lower()
 
             if key in budget_posts: #checks if budget post already exists
