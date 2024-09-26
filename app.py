@@ -8,7 +8,6 @@ def calculated_excess(salary): #function to calculated excess salary
     excess = salary - calculated_costs()
     return excess
 
-
 print("Välkommen till ditt budgetprogram") # Start of program
 while True:
     salary = input("Vad är din lön? ")
@@ -57,7 +56,13 @@ while True: #Main loop
         print(f"{key}: {value}", "kr")
         print("Summan av alla dina kostnader är: ", calculated_costs(), "kr")
         print("Du har såhär mycket pengar kvar: ", calculated_excess(salary), "kr")
-        break
+        question = input("Vill du spara detta till en fil? ja/nej ").lower()
+        if question == "ja":
+            file = open("budget.txt", "w")
+            for key, value in budget_posts.items():
+                file.write(f"{key}: {value}\n")
+            file.close()
+            break
     elif svar == "val 4": #Quit program
         print("Avslutar...")
         break
