@@ -33,8 +33,8 @@ while True: #Main loop
             else:
                 value = float(input("Vad kostar denna kategori? "))
                 budget_posts[key] = value
-                question = input("Vill du lägga till en kategori till? Ja/Nej ")
-                if question == "Ja":
+                question = input("Vill du lägga till en kategori till? Ja/Nej ").lower()
+                if question == "ja":
                     continue
                 else:
                     break
