@@ -73,6 +73,7 @@ while True: #Main loop
             file = open("budget.txt", "w")
             for key, value in budget_posts.items():
                 file.write(f"{key}: {value}\n")
+                file.write(f"Din lön är: {salary}")
             file.close()
             break
         elif question == "nej":
