@@ -34,8 +34,8 @@ while True: #Main loop
                 value = float(input("Vad kostar denna kategori? "))
                 budget_posts[key] = value
                 question = input("Vill du lägga till en kategori till? Ja/Nej ")
-                if question == "Yes":
-                    pass
+                if question == "Ja":
+                    continue
                 else:
                     break
     elif svar == "Val 2": # Change budgetpost
