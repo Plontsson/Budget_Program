@@ -32,23 +32,34 @@ while True: #Main loop
             else:
                 value = float(input("Vad kostar denna budgetpost? "))
                 budget_posts[key] = value
-                question = input("Vill du lägga till en budgetpost till? Ja/Nej ").lower() #checks if user wants to add another budgetpost before remaining to main loop
+            question = ""
+            while True:
+                question = input("Vill du lägga till en budgetpost till? Ja/Nej ").lower() #checks if user wants to add another budgetpost before returning to main loop
                 if question == "ja":
-                    continue
-                else:
                     break
+                elif question == "nej":
+                    break
+                else:
+                    print("Du måste skriva ja eller nej! ")
+            if question == "nej":
+                break
+            
     elif svar == "val 2": # Change budgetpost
         while True:
             key = input("Vilken kategori skulle du vilja ändra? ").lower()
+
             if key in budget_posts: #checks if budget post already exists
                 print("Budgetposten kostar såhär mycket just nu:", budget_posts[key], "kr")
                 value = float(input("Hur mycket kostar kategorin? "))
                 budget_posts[key] = value
-                question = input("Vill du ändra en budgetpost till? Ja/Nej").lower() #checks if user wants to add another budgetpost before remaining to main loop
+                question = input("Vill du ändra en budgetpost till? Ja/Nej").lower() #checks if user wants to add another budgetpost before returning to main loop
                 if question == "ja":
                     continue
-                else:
+                elif question == "nej":
                     break
+                else:
+                    print("Du måste svara ja eller nej! ")
+                    continue
             else:
                 print("Den budgetposten finns inte!") 
         
@@ -56,13 +67,22 @@ while True: #Main loop
         print(f"{key}: {value}", "kr")
         print("Summan av alla dina kostnader är: ", calculated_costs(), "kr")
         print("Du har såhär mycket pengar kvar: ", calculated_excess(salary), "kr")
-        question = input("Vill du spara detta till en fil? ja/nej ").lower()
-        if question == "ja":
+        question = input("Vill du spara detta till en fil? ja/nej ").lower() #Question user if to create txt file of budget
+
+        if question == "ja": 
             file = open("budget.txt", "w")
             for key, value in budget_posts.items():
                 file.write(f"{key}: {value}\n")
             file.close()
             break
+        elif question == "nej":
+            break
+        else:
+            print("Du måste svara ja eller nej! ")
+            continue
+
+
+
     elif svar == "val 4": #Quit program
         print("Avslutar...")
         break
