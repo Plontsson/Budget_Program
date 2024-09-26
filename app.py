@@ -73,7 +73,8 @@ while True: #Main loop
             file = open("budget.txt", "w")
             for key, value in budget_posts.items():
                 file.write(f"{key}: {value}\n")
-                file.write(f"Din lön är: {salary}")
+                file.write(f"Summan av dina kostnader är: {calculated_costs()}\n") #write the calculated costs to the budget file
+                file.write(f"Du har såhär mycket pengar över: {calculated_excess(salary)}")
             file.close()
             break
         elif question == "nej":
