@@ -11,7 +11,7 @@ def calculated_excess(salary): #function to calculated excess salary
 
 print("Välkommen till ditt budgetprogram") # Start of program
 while True:
-    salary = input("Vad är din lön?")
+    salary = input("Vad är din lön? ")
     try:
         salary = float(salary)
         break
@@ -39,19 +39,26 @@ while True: #Main loop
                 else:
                     break
     elif svar == "val 2": # Change budgetpost
-        key = input("Vilken kategori skulle du vilja ändra? ").lower()
-        if key in budget_posts: #checks if budget post already exists
-            value = float(input("Hur mycket kostar kategorin? "))
-            budget_posts[key] = value
-        else:
-            print("Den budgetposten finns inte!") 
+        while True:
+            key = input("Vilken kategori skulle du vilja ändra? ").lower()
+            if key in budget_posts: #checks if budget post already exists
+                print("Budgetposten kostar såhär mycket just nu:", budget_posts[key], "kr")
+                value = float(input("Hur mycket kostar kategorin? "))
+                budget_posts[key] = value
+                question = input("Vill du ändra en budgetpost till? Ja/Nej").lower() #checks if user wants to add another budgetpost before remaining to main loop
+                if question == "ja":
+                    continue
+                else:
+                    break
+            else:
+                print("Den budgetposten finns inte!") 
         
-    elif svar == "val 3": # Val 3 loop
-        print(budget_posts)
-        print("Summan av alla dina kostnader är: ", calculated_costs())
-        print("Du har såhär mycket pengar kvar: ", calculated_excess(salary))
+    elif svar == "val 3": #Printing budgetpost
+        print(f"{key}: {value}", "kr")
+        print("Summan av alla dina kostnader är: ", calculated_costs(), "kr")
+        print("Du har såhär mycket pengar kvar: ", calculated_excess(salary), "kr")
         break
-    elif svar == "val 4": #Avslutar programmet
+    elif svar == "val 4": #Quit program
         print("Avslutar...")
         break
     else:
